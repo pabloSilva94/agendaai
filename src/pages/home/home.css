@@ -1,0 +1,89 @@
+.containerDashboard {
+  display: flex;
+}
+.mainDashboard {
+  width: 100%;
+  height: auto;
+}
+
+.hUser {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+  height: 70px;
+  padding: 0px 300px;
+  background: #616161;
+  color: #fff;
+}
+
+.hNameAvatar {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.main {
+  display: flex;
+  position: fixed;
+  height: 100%;
+  padding: 10px 300px;
+  justify-content: space-between;
+  gap: 10px;
+}
+.minfos {
+ display: flex;
+ flex-wrap: wrap;
+ width: 50%;
+ height: 370px;
+ gap:10px;
+}
+.minfos > h1 {
+  font-size: 18px;
+}
+.mCalendar {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  height: auto;
+  gap: 10px;
+}
+
+.mBtnHora {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 10px;
+}
+.history-container {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none; /* Remover barra de rolagem do navegador */
+  -ms-overflow-style: none; /* Remover barra de rolagem do IE */
+}
+
+.history-item {
+  flex: 0 0 auto;
+  width: 200px; /* Largura fixa para cada item */
+  height: 200px; /* Altura fixa para cada item */
+}
+
+@media screen and (max-width: 1427px) {
+  .hUser {
+    padding: 0 10px;
+  }
+  .main {
+    flex-direction: column;
+    padding: 0 10px;
+    justify-content: flex-start;
+  }
+  .minfos {
+    width: 100%;
+    align-items: flex-start;
+  }
+  .mCalendar {
+    width: 100%;
+  }
+}
