@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import moment from 'moment';
 import 'moment/dist/locale/pt-br';
 import './calendarLineStyle.css';
@@ -7,8 +7,7 @@ import { Select } from "antd";
 const { Option } = Select;
 moment.locale('pt-br');
 
-const CalendarList = ({onDaySelect }) => {
-  const containerRef = useRef(null);
+const CalendarList = ({onDaySelect,containerRef }) => {
   const [selectedMonth, setSelectedMonth] = useState(moment().month());
   const [daysOfMonth, setDaysOfMonth] = useState([]);
   const [selectedDay, setSelectedDay] = useState(moment().startOf('day'));
@@ -21,14 +20,6 @@ const CalendarList = ({onDaySelect }) => {
     return str.charAt(0).toUpperCase() + str.slice(1);
   };
 
-  useEffect(() => {
-    if (containerRef.current) {
-      const diaAtualElement = containerRef.current.querySelector('.currentDay');
-      if (diaAtualElement) {
-        diaAtualElement.scrollIntoViewIfNeeded({ behavior: 'smooth', block: 'center' });
-      }
-    }
-  }, []);
 
   useEffect(() => {
     const primeiroDiaDoMes = moment().month(selectedMonth).startOf('month');
@@ -52,7 +43,7 @@ const CalendarList = ({onDaySelect }) => {
 
   return (
     <div>
-      <div className='lHeaderCalendar'>
+      <div ref={containerRef}  className='lHeaderCalendar'>
         <Select defaultValue={moment().month()} onChange={handleMonthChange}>
           {moment.months().map((month, index) => (
             <Option key={index} value={index}>

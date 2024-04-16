@@ -1,6 +1,7 @@
 .containerDashboard {
   display: flex;
 }
+
 .mainDashboard {
   width: 100%;
   height: auto;
@@ -22,6 +23,7 @@
   gap: 10px;
   align-items: center;
 }
+
 .main {
   display: flex;
   position: fixed;
@@ -30,16 +32,22 @@
   justify-content: space-between;
   gap: 10px;
 }
+
 .minfos {
- display: flex;
- flex-wrap: wrap;
- width: 50%;
- height: 370px;
- gap:10px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 50%;
+  height: 370px;
+  gap: 10px;
 }
-.minfos > h1 {
+.cardProvider{
+  width: 280px;
+}
+
+.minfos>h1 {
   font-size: 18px;
 }
+
 .mCalendar {
   display: flex;
   flex-direction: column;
@@ -55,35 +63,70 @@
   width: 100%;
   gap: 10px;
 }
+
 .history-container {
   display: flex;
   flex-direction: row;
   overflow-x: auto;
   scroll-behavior: smooth;
-  scrollbar-width: none; /* Remover barra de rolagem do navegador */
-  -ms-overflow-style: none; /* Remover barra de rolagem do IE */
+  scrollbar-width: none;
+  /* Remover barra de rolagem do navegador */
+  -ms-overflow-style: none;
+  /* Remover barra de rolagem do IE */
 }
 
 .history-item {
   flex: 0 0 auto;
-  width: 200px; /* Largura fixa para cada item */
-  height: 200px; /* Altura fixa para cada item */
+  width: 200px;
+  /* Largura fixa para cada item */
+  height: 200px;
+  /* Altura fixa para cada item */
 }
 
 @media screen and (max-width: 1427px) {
   .hUser {
     padding: 0 10px;
   }
+
   .main {
     flex-direction: column;
     padding: 0 10px;
     justify-content: flex-start;
   }
+
   .minfos {
     width: 100%;
     align-items: flex-start;
   }
+
   .mCalendar {
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 415px) {
+  .minfos {
+    height: 70%;
+    scrollbar-width: none;
+    overflow: auto;
+    flex-wrap: nowrap;
+    flex-direction: column;
+  }
+  .cardProvider{
+    width: 380px;
+  }
+  .minfos::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mCalendar {
+    width: 100%;
+  }
+
+
+}
+@media screen and (min-width: 350px) {
+  .cardProvider{
+    width: 365px;
   }
 }
