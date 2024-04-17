@@ -36,12 +36,15 @@
 .minfos {
   display: flex;
   flex-wrap: wrap;
-  width: 50%;
-  height: 370px;
+  width: 90%;
+  height: 550px;
   gap: 10px;
+  scrollbar-width: none;
+  overflow: auto;
 }
 .cardProvider{
   width: 280px;
+  height: 250px;
 }
 
 .minfos>h1 {
@@ -70,17 +73,13 @@
   overflow-x: auto;
   scroll-behavior: smooth;
   scrollbar-width: none;
-  /* Remover barra de rolagem do navegador */
   -ms-overflow-style: none;
-  /* Remover barra de rolagem do IE */
 }
 
 .history-item {
   flex: 0 0 auto;
   width: 200px;
-  /* Largura fixa para cada item */
   height: 200px;
-  /* Altura fixa para cada item */
 }
 
 @media screen and (max-width: 1427px) {
@@ -106,14 +105,13 @@
 
 @media screen and (max-width: 415px) {
   .minfos {
-    height: 70%;
-    scrollbar-width: none;
-    overflow: auto;
+    height: 100%;
     flex-wrap: nowrap;
     flex-direction: column;
   }
   .cardProvider{
     width: 380px;
+    height: auto;
   }
   .minfos::-webkit-scrollbar {
     display: none;

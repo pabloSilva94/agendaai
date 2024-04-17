@@ -10,6 +10,7 @@ function Home() {
   const [selectedDay, setSelectedDay] = useState("");
   const [user, setUser] = useState([]);
   const [isMoblieCalnedar, setIsMobileCalendar] = useState(false);
+  const [horariosBloqueados, setHorariosBloqueados] = useState({});
 
   const handleDaySelect = (day) => {
     setSelectedDay(day);
@@ -38,6 +39,11 @@ function Home() {
       }
     }
   }, []);
+
+  const handleHorarioSelect = (horario) => {
+    setHorariosBloqueados({ ...horariosBloqueados, [horario]: true });
+  };
+
   return (
     <div className="containerDashboard">
       <div className="mainDashboard">
@@ -61,7 +67,7 @@ function Home() {
             )}
           </div>
           <div className="minfos">
-            <CardUser />
+            <CardUser horariosBloqueados={horariosBloqueados} onHorarioSelect={handleHorarioSelect} />
           </div>
         </div>
       </div>

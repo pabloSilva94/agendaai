@@ -1,9 +1,18 @@
+
 import { Avatar, Button, Card, Flex, Tag } from "antd";
 import Meta from "antd/es/card/Meta";
 import "../../pages/home/home.css";
 import { FieldTimeOutlined } from "@ant-design/icons";
+import { useState } from "react";
+import ModalAgendamento from "../Modal/ModalAgendamento";
 
-function CardUser() {
+function CardUser({ horariosBloqueados, onHorarioSelect }) {
+  const [open, setOpen] = useState(false);
+  const [isBlock, setIsBlock] = useState(false);
+  const showModal = () => {
+    setOpen(true);
+    setIsBlock(true);
+  };
   return (
     <Card className="cardProvider" bordered={false}>
       <Meta
@@ -18,39 +27,31 @@ function CardUser() {
               <strong>Horários disponíveis para este dia:</strong>
             </p>
             <Flex gap="4px 0" wrap="wrap">
-              <Tag bordered={true} color="green">
-                <Button type="text"  icon={<FieldTimeOutlined />} style={{color:"#87d068"}} >
-                  08:00
-                </Button>
-              </Tag>
-              <Tag bordered={false} color="green">
-                <Button type="text" icon={<FieldTimeOutlined />} style={{color:"#87d068"}}>
-                  09:00
-                </Button>
-              </Tag>
-              <Tag bordered={false} color="green">
-                <Button type="text" icon={<FieldTimeOutlined />} style={{color:"#87d068"}}>
-                  10:00
-                </Button>
-              </Tag>
-              <Tag bordered={false} color="green">
-                <Button type="text" icon={<FieldTimeOutlined />} style={{color:"#87d068"}}>
-                  11:00
-                </Button>
-              </Tag>
-              <Tag bordered={false} color="green">
-                <Button type="text" icon={<FieldTimeOutlined />} style={{color:"#87d068"}}>
-                  12:00
-                </Button>
-              </Tag>
-              <Tag bordered={false} color="green">
-                <Button type="text" icon={<FieldTimeOutlined />} style={{color:"#87d068"}}>
-                  13:00
-                </Button>
-              </Tag>
+              {['08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00'].map(horario => (
+                <Tag bordered={true} color={horariosBloqueados[horario] ? "default" : "green"} key={horario}>
+                  <Button
+                    type="text"
+                    disabled={horariosBloqueados[horario]}
+                    onClick={() => {
+                      onHorarioSelect(horario);
+                      showModal();
+                    }}
+                    icon={<FieldTimeOutlined />}
+                    style={{ color: horariosBloqueados[horario] ? "#acacac" : "#87d068" }}
+                  >
+                    {horario}
+                  </Button>
+                </Tag>
+              ))}
             </Flex>
           </div>
         }
+      />
+      <ModalAgendamento
+        setOpen={setOpen}
+        open={open}
+        setIsBlock={setIsBlock}
+        isBlock={isBlock}
       />
     </Card>
   );
