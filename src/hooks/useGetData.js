@@ -1,5 +1,4 @@
 import { supabase } from "../services/supabase/supabase";
-
 export const getDate = async (selectedDate) => {
   const { date, id_loja } = selectedDate;
 
@@ -25,6 +24,7 @@ export const getDate = async (selectedDate) => {
 
     if (allDate.length > 0) {
       if (allDate[0].schedule.length === 0) {
+        localStorage.setItem("s", JSON.stringify(allDate));
         return {
           success: true,
           message: `A loja não possui agendamentos neste dia ${date}`,

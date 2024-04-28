@@ -5,10 +5,13 @@ import "./calendarLineStyle.css";
 import { Button } from "antd";
 import { Select } from "antd";
 import { getDate } from "../../hooks/useGetData";
+import { useScrollContext } from "../../context/scrollContext";
 const { Option } = Select;
 moment.locale("pt-br");
 
-const CalendarList = ({ onDaySelect, containerRef, scrollToCurrentDay }) => {
+const CalendarList = ({ onDaySelect }) => {
+  const { scrollToCurrentDay, containerRef } = useScrollContext();
+  
   const [selectedMonth, setSelectedMonth] = useState(moment().month());
   const [daysOfMonth, setDaysOfMonth] = useState([]);
   const [selectedDay, setSelectedDay] = useState(moment().startOf("day"));

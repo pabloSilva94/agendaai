@@ -28,16 +28,14 @@ function CardUser({ horariosBloqueados, onHorarioSelect }) {
             </p>
             <Flex gap="4px 0" wrap="wrap">
               {['08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00'].map(horario => (
-                <Tag bordered={true} color={horariosBloqueados[horario] ? "default" : "green"} key={horario}>
+                <Tag bordered={true} color={horario ? "default" : "green"} key={horario}>
                   <Button
                     type="text"
-                    disabled={horariosBloqueados[horario]}
                     onClick={() => {
-                      onHorarioSelect(horario);
                       showModal();
                     }}
                     icon={<FieldTimeOutlined />}
-                    style={{ color: horariosBloqueados[horario] ? "#acacac" : "#87d068" }}
+                    style={{ color:horario  ? "#acacac" : "#87d068" }}
                   >
                     {horario}
                   </Button>
