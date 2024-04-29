@@ -4,7 +4,7 @@ import Meta from "antd/es/card/Meta";
 import "../../pages/home/home.css";
 import { FieldTimeOutlined } from "@ant-design/icons";
 import { useState } from "react";
-import ModalAgendamento from "../Modal/ModalAgendamento";
+import {ModalAgendamento} from "../Modal/ModalAgendamento";
 
 function CardUser({ horariosBloqueados, onHorarioSelect }) {
   const [open, setOpen] = useState(false);
